@@ -18,7 +18,6 @@ export class StudentService {
     async getAllStudents(){
         //displays students in descending order of their weightedScore(0.7*gpa+0.3*attendance)
         const data= await this.studentRepository.find();
-        console.log(typeof(data));
         const sortedArray=mergeSort(data);
         return sortedArray;
     }

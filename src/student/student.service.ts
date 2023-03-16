@@ -1,21 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { student } from '../entities/student';
+import { Student } from '../entities/Student';
 import { InjectRepository} from '@nestjs/typeorm';
 import {Repository} from 'typeorm';
 import { CreateStudentDto } from './dto/createStudent.dto';
 import { UpdateStudentDto } from './dto/updateStudent.dto';
+import { mergeSort } from 'src/functions/sort';
 
 @Injectable()
 export class StudentService {
     constructor(
-    @InjectRepository(student) private studentRepository: Repository<student>,
+    @InjectRepository(Student) private studentRepository: Repository<Student>,
     ){}
-    getStudents(id):Promise<student>{
+    getStudents(id):Promise<Student>{
         return this.studentRepository.findOneBy({id});
     }
 
-    getAllStudents(){
-        return this.studentRepository.find();
+    async getAllStudents(){
+        //displays students in descending order of their weightedScore(0.7*gpa+0.3*attendance)
+        const data= await this.studentRepository.find();
+        console.log(typeof(data));
+        const sortedArray=mergeSort(data);
+        return sortedArray;
     }
     createStudents(studentDetails:CreateStudentDto){
         const newStudent= this.studentRepository.create({...studentDetails,createdAt:new Date()});

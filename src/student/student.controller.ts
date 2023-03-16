@@ -15,6 +15,7 @@ export class StudentController {
 
     @Get()
     getAllStudents(){
+        //displays students in descending order of their weightedScore(0.7*gpa+0.3*attendance)
         return this.studentService.getAllStudents();
     }
     

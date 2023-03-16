@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { student } from './entities/student';
+import { Student } from './entities/student';
 import { StudentModule } from './student/student.module';
 
 @Module({
@@ -13,8 +13,8 @@ import { StudentModule } from './student/student.module';
       username:'root',
       password:'',
       database:'characterxyz',
-      entities:[student],
-      synchronize: false,
+      entities:[Student],
+      synchronize: true,
     }),
     StudentModule
   ],

@@ -1,3 +1,4 @@
+//this dto is used for updating student records
 export class UpdateStudentDto{
     name:string;
     age:number;

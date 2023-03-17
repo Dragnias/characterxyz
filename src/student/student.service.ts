@@ -1,3 +1,4 @@
+//necessary modules and classes are imported 
 import { Injectable } from '@nestjs/common';
 import { Student } from '../entities/Student';
 import { InjectRepository} from '@nestjs/typeorm';
@@ -8,10 +9,13 @@ import { mergeSortFM, mergeSortRD } from 'src/functions/sort';
 
 @Injectable()
 export class StudentService {
+    //A repository is created for type Student 
     constructor(
     @InjectRepository(Student) private studentRepository: Repository<Student>,
     ){}
+    //Promise is used to specify the return type
     getStudents(id):Promise<Student>{
+        //this method returns student records for corresponding id
         return this.studentRepository.findOneBy({id});
     }
 
@@ -34,8 +38,10 @@ export class StudentService {
     }
     
     createStudents(studentDetails:CreateStudentDto){
+        //this method is used to create student records in the db
         const newStudent= this.studentRepository.create({...studentDetails,createdAt:new Date()});
         this.studentRepository.save(newStudent);
+        //this if condition checks if there is any value typed in the body if true perform create
         if(Object.keys(studentDetails).length>0){
             return newStudent;
         }
@@ -45,6 +51,7 @@ export class StudentService {
     }
     
     async updateStudent(id:number, updateStudentDetails:UpdateStudentDto){ 
+        //this method updates values of a record in the db
         this.studentRepository.update({ id } , {...updateStudentDetails,modifiedAt:new Date()});
         if(await this.studentRepository.countBy({id})>0){
             return this.studentRepository.findOneBy({id});
@@ -55,6 +62,7 @@ export class StudentService {
     }
 
     async deleteStudent(id){
+        //this method deletes record from db based on id provided
         if(await this.studentRepository.countBy({id})>0){
             return this.studentRepository.delete({id});
         }

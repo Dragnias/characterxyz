@@ -10,6 +10,7 @@ export class StudentController {
     constructor(private studentService: StudentService){}
     @Get('id:id')
     async getStudents(@Param('id',ParseIntPipe) id:number,@Res() res:Response){
+        //displays the student according to its id 
         const data = await this.studentService.getStudents(id);
         if(data){
             const status=HttpStatus.OK+"  Ok";
@@ -66,6 +67,7 @@ export class StudentController {
     
     @Post()
     createStudents(@Body() CreateStudentDto: CreateStudentDto,@Res() res:Response){
+        //creates a student entity 
         const data=this.studentService.createStudents(CreateStudentDto);
         if(data==1){
             res.status(HttpStatus.BAD_REQUEST).send(HttpStatus.BAD_REQUEST+'   Bad Request { "message": "Invalid Request Body" }');
@@ -80,6 +82,7 @@ export class StudentController {
 
     @Patch(':id')
     async updateStudentById(@Param('id',ParseIntPipe)id:number,@Body() updateStudentDto:UpdateStudentDto,@Res() res:Response){
+        //updates student entity according to id
         const data= await this.studentService.updateStudent(id,updateStudentDto);
         if(data==1){
             res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
@@ -93,6 +96,7 @@ export class StudentController {
 
     @Delete(':id')
     async deleteStudentById(@Param('id',ParseIntPipe)id:number, @Res() res:Response){
+        //deletes a student entity according to id 
         const data= await this.studentService.deleteStudent(id);
         if(data==1){
             res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');

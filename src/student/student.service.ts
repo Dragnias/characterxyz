@@ -32,6 +32,7 @@ export class StudentService {
             return await this.studentRepository.find();
         }
     }
+    
     createStudents(studentDetails:CreateStudentDto){
         const newStudent= this.studentRepository.create({...studentDetails,createdAt:new Date()});
         this.studentRepository.save(newStudent);

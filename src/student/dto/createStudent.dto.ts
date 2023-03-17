@@ -1,3 +1,4 @@
+//this dto is used for creating student records
 export class CreateStudentDto{
     name:string;
     age:number;

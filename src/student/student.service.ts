@@ -4,7 +4,7 @@ import { InjectRepository} from '@nestjs/typeorm';
 import {Repository} from 'typeorm';
 import { CreateStudentDto } from './dto/createStudent.dto';
 import { UpdateStudentDto } from './dto/updateStudent.dto';
-import { mergeSort } from 'src/functions/sort';
+import { mergeSortFM, mergeSortRD } from 'src/functions/sort';
 
 @Injectable()
 export class StudentService {
@@ -15,12 +15,22 @@ export class StudentService {
         return this.studentRepository.findOneBy({id});
     }
 
-    async getAllStudents(){
-        //displays students in descending order of their weightedScore(0.7*gpa+0.3*attendance)
-        const data= await this.studentRepository.find();
-        console.log(typeof(data));
-        const sortedArray=mergeSort(data);
-        return sortedArray;
+    async getAllStudents(type){
+        if(type==1){
+            //displays students in descending order of their weightedScore(0.7*gpa+0.3*attendance)
+            const data= await this.studentRepository.find();
+            const sortedArray=mergeSortFM(data);
+            return sortedArray;
+        }
+        if(type==2){
+            //displays students in ascending order of their registration_date
+            const data= await this.studentRepository.find();
+            const sortedArray=mergeSortRD(data);
+            return sortedArray;
+        }
+        if(type==0){
+            return await this.studentRepository.find();
+        }
     }
     createStudents(studentDetails:CreateStudentDto){
         const newStudent= this.studentRepository.create({...studentDetails,createdAt:new Date()});

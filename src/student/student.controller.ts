@@ -8,26 +8,72 @@ import { StudentService } from './student.service';
 @Controller('student')
 export class StudentController {
     constructor(private studentService: StudentService){}
-    @Get(':id')
-    getStudents(@Param('id',ParseIntPipe) id:number){
-        return this.studentService.getStudents(id); 
+    @Get('id:id')
+    async getStudents(@Param('id',ParseIntPipe) id:number,@Res() res:Response){
+        const data = await this.studentService.getStudents(id);
+        if(data){
+            const status=HttpStatus.OK+"  Ok";
+            const Content_Type="application/json";
+            res.send({status,Content_Type,data});
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+        }
+        else{
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+        } 
     }
 
     @Get()
-    getAllStudents(){
+    async getAllStudents(@Res() res:Response){
+        //displays all students
+        const data =await  this.studentService.getAllStudents(0);
+        if(data){
+            const status=HttpStatus.OK+"  Ok";
+            const Content_Type="application/json";
+            res.send({status,Content_Type,data});
+        }
+        else{
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+        }
+    }
+
+    @Get("weightedScore")
+    async getAllStudents1(@Res() res:Response){
         //displays students in descending order of their weightedScore(0.7*gpa+0.3*attendance)
-        return this.studentService.getAllStudents();
+        const data = await this.studentService.getAllStudents(1);
+        if(data){
+            const status=HttpStatus.OK+"  Ok";
+            const Content_Type="application/json";
+            res.send({status,Content_Type,data});
+        }
+        else{
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+        }
+    }
+
+    @Get('registrationDate')
+    async getAllStudents2(@Res() res:Response){
+        //displays students in ascending order of their registration_date
+        const data = await this.studentService.getAllStudents(2);
+        if(data){
+            const status=HttpStatus.OK+"  Ok";
+            const Content_Type="application/json";
+            res.send({status,Content_Type,data});    
+        }
+        else{
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+        }
     }
     
     @Post()
-    createStudents(@Body() CreateStudentDto: CreateStudentDto,@Res() res:Response,){
+    createStudents(@Body() CreateStudentDto: CreateStudentDto,@Res() res:Response){
         const data=this.studentService.createStudents(CreateStudentDto);
         if(data==1){
             res.status(HttpStatus.BAD_REQUEST).send(HttpStatus.BAD_REQUEST+'   Bad Request');
         }
         else{
             const status=HttpStatus.CREATED+"  Created";
-            res.send({status,data});
+            const Content_Type="application/json";
+            res.send({status,Content_Type,data});
         }
         
     }
@@ -40,7 +86,8 @@ export class StudentController {
         }
         else{
             const status=HttpStatus.OK+"  Ok";
-            res.send({status,data});
+            const Content_Type="application/json";
+            res.send({status,Content_Type,data});
         }
     }
 

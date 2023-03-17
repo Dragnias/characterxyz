@@ -22,3 +22,4 @@ import { StudentModule } from './student/student.module';
   providers: [AppService],
 })
 export class AppModule {}
+ 

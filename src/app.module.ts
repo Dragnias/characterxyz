@@ -14,7 +14,7 @@ import { StudentModule } from './student/student.module';
       password:'',
       database:'characterxyz',
       entities:[Student],
-      synchronize: true,
+      synchronize: false,
     }),
     StudentModule
   ],

@@ -15,10 +15,10 @@ export class StudentController {
             const status=HttpStatus.OK+"  Ok";
             const Content_Type="application/json";
             res.send({status,Content_Type,data});
-            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
         }
         else{
-            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
         } 
     }
 
@@ -32,7 +32,7 @@ export class StudentController {
             res.send({status,Content_Type,data});
         }
         else{
-            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
         }
     }
 
@@ -46,7 +46,7 @@ export class StudentController {
             res.send({status,Content_Type,data});
         }
         else{
-            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
         }
     }
 
@@ -60,7 +60,7 @@ export class StudentController {
             res.send({status,Content_Type,data});    
         }
         else{
-            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
         }
     }
     
@@ -68,7 +68,7 @@ export class StudentController {
     createStudents(@Body() CreateStudentDto: CreateStudentDto,@Res() res:Response){
         const data=this.studentService.createStudents(CreateStudentDto);
         if(data==1){
-            res.status(HttpStatus.BAD_REQUEST).send(HttpStatus.BAD_REQUEST+'   Bad Request');
+            res.status(HttpStatus.BAD_REQUEST).send(HttpStatus.BAD_REQUEST+'   Bad Request { "message": "Invalid Request Body" }');
         }
         else{
             const status=HttpStatus.CREATED+"  Created";
@@ -82,7 +82,7 @@ export class StudentController {
     async updateStudentById(@Param('id',ParseIntPipe)id:number,@Body() updateStudentDto:UpdateStudentDto,@Res() res:Response){
         const data= await this.studentService.updateStudent(id,updateStudentDto);
         if(data==1){
-            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
         }
         else{
             const status=HttpStatus.OK+"  Ok";
@@ -95,7 +95,7 @@ export class StudentController {
     async deleteStudentById(@Param('id',ParseIntPipe)id:number, @Res() res:Response){
         const data= await this.studentService.deleteStudent(id);
         if(data==1){
-            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found');
+            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
         }
         else{
             const status=HttpStatus.NO_CONTENT+"  No Content";

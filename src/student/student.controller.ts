@@ -12,7 +12,7 @@ export class StudentController {
     @Get('id:id')
     //ParseIntPipe is used to checks if the given value is an integer if it's not an integer it converts it into an integer
     //Param decorator is used to define parameters
-    //async is used to make a function asynchronous so that an empty set is not returned during function calls
+    //async is used to make a method asynchronous so that an empty set is not returned during method or function calls
     async getStudents(@Param('id',ParseIntPipe) id:number,@Res() res:Response){
         //displays the student according to its id 
         // await is a keyword which can only be used in async functions or classes it waits till a value is returned

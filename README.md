@@ -66,7 +66,7 @@ $ npm run test:cov
 
 ## Project building experience
 
-Started the project on 12-03-2023, reviewed through lots of websites and yt for the basics of Nest.js and creation of APIs. Started of with implementing through the mongoose module and mongoDb instead of TypeOrm and mysql xD. Had to restart the project again from scratch after realising the mistake, started anew on 14-03-2023 and went through the whole studying process along with https://github.com/Anirudh-018 cooperating and finishing the project was much faster and easier. We were able to completely understand the work to be done and completed it by 16-03-2023. The RESTful API works fine and can be implemeted for various other data models.
+Started the project on 12-03-2023, reviewed through lots of websites and yt for the basics of Nest.js and creation of APIs. Started of with implementing through the mongoose module and mongoDb instead of TypeOrm and mysql xD. Had to restart the project again from scratch after realising the mistake, started anew on 14-03-2023 and went through the whole studying process along with https://github.com/Anirudh-018 cooperating and finishing the project was much faster and easier. Extra ideas of multiple records insert and updation,deletion and fetching records based on values other than id could have been implemented but nearing the deadline, only the specified features were added. We were able to completely understand the work to be done and completed it by 16-03-2023. The RESTful API works fine and can be implemeted for various other data models. Over all it was an wholesome experience working with APIs and studying new technology other than just portions, would love to work on projects like these.
 
 
 ## Future outcomes

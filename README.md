@@ -58,6 +58,14 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+
+## Documentation 
+
+```bash
+Link:https://documenter.getpostman.com/view/26319366/2s93JzLL9M
+```
+
+
 ## Project building experience
 
 Started the project on 13-03-2023, reviewed through lots of websites and yt for the basics of Nest.js and creation of APIs. Started of with implementing through the mongoose module and mongoDb instead of TypeOrm and mysql xD. Had to restart the project again from scratch after realising the mistake, started anew on 15-03-2023 and went through the whole studying process along with https://github.com/Anirudh-018 cooperating and finishing the project was much faster and easier. We were able to completely understand the work to be done and completed it by 16-03-2023. The RESTful API works fine and can be implemeted for various other data models.

@@ -58,6 +58,11 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Project building experience
+
+Started the project on 13-03-2023, reviewed through lots of websites and yt for the basics of Nest.js and creation of APIs. Started of with implementing through the mongoose module and mongoDb instead of TypeOrm and mysql xD. Had to restart the project again from scratch after realising the mistake, started anew on 15-03-2023 and my system refused to cooperate with me  
+
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).

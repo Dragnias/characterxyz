@@ -61,9 +61,7 @@ $ npm run test:cov
 
 ## Documentation 
 
-```bash
-Link:https://documenter.getpostman.com/view/26319366/2s93JzLL9M
-```
+[Postman documentation](https://documenter.getpostman.com/view/26319366/2s93JzLL9M)
 
 
 ## Project building experience

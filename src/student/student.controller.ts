@@ -21,7 +21,7 @@ export class StudentController {
             const status=HttpStatus.OK+"  Ok";
             const Content_Type="application/json";
             res.send({status,Content_Type,data});
-            res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
+            //res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
         }
         else{
             res.status(HttpStatus.NOT_FOUND).send(HttpStatus.NOT_FOUND+'  Not Found { "message": "Record not found" }');
